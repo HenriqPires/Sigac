@@ -1,0 +1,50 @@
+@extends('layouts.sidebar')
+
+@section('header')
+    <i class="bi bi-house-door-fill me-2"></i> Bem-vindo ao Sistema SIGAC
+@endsection
+
+@section('content')
+<div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+    <div class="col">
+        <div class="card h-100 border-success shadow">
+            <div class="card-body text-center">
+                <h5 class="card-title text-success"><i class="bi bi-book-fill me-2"></i>Cursos</h5>
+                <a href="{{ route('cursos.index') }}" class="btn btn-success w-100">Gerenciar Cursos</a>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card h-100 border-primary shadow">
+            <div class="card-body text-center">
+                <h5 class="card-title text-primary"><i class="bi bi-people-fill me-2"></i>Turmas</h5>
+                <a href="{{ route('turmas.index') }}" class="btn btn-primary w-100">Gerenciar Turmas</a>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card h-100 border-warning shadow">
+            <div class="card-body text-center">
+                <h5 class="card-title text-warning"><i class="bi bi-diagram-3-fill me-2"></i>Eixos</h5>
+                <a href="{{ route('eixos.index') }}" class="btn btn-warning text-white w-100">Gerenciar Eixos</a>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card h-100 border-info shadow">
+            <div class="card-body text-center">
+                <h5 class="card-title text-info"><i class="bi bi-tags-fill me-2"></i>Categorias</h5>
+                <a href="{{ route('categorias.index') }}" class="btn btn-info text-white w-100">Gerenciar Categorias</a>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card h-100 border-secondary shadow">
+            <div class="card-body text-center">
+                <h5 class="card-title text-secondary"><i class="bi bi-file-earmark-text-fill me-2"></i>Documentos</h5>
+                <a href="{{ route('documentos.index') }}" class="btn btn-outline-secondary w-100">Minhas Solicitações</a>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
