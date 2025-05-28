@@ -8,9 +8,9 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->enum('tipo', ['admin', 'aluno'])->default('aluno');
-        });
+       Schema::table('users', function (Blueprint $table) {
+        $table->string('tipo')->default('aluno');
+    });
     }
 
     /**

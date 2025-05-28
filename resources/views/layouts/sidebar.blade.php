@@ -49,8 +49,11 @@
                 <li><a href="{{ route('eixos.index') }}" class="nav-link"><i class="bi bi-diagram-3-fill me-2"></i>Eixos</a></li>
                 <li><a href="{{ route('categorias.index') }}" class="nav-link"><i class="bi bi-tags-fill me-2"></i>Categorias</a></li>
                 <li><a href="{{ route('documentos.index') }}" class="nav-link"><i class="bi bi-file-earmark-text-fill me-2"></i>Documentos</a></li>
+                <li><a href="{{ route('alunos.index') }}" class="nav-link"><i class="bi bi-person-lines-fill me-2"></i>Alunos</a></li>
+                <li><a href="{{ route('nivels.index') }}" class="nav-link"><i class="bi bi-layers-fill me-2"></i>Níveis</a></li>
+                
             </ul>
-            <hr class="text-white">
+           <hr class="text-white">
             <div class="text-white">
                 <strong>{{ Auth::user()->name }}</strong>
                 <form method="POST" action="{{ route('logout') }}" class="mt-2">
