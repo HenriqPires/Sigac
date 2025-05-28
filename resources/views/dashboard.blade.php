@@ -46,5 +46,21 @@
             </div>
         </div>
     </div>
+    <div class="col">
+        <div class="card border-dark shadow-sm h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title"><i class="bi bi-person-badge-fill me-2"></i>Alunos</h5>
+                <a href="{{ route('alunos.index') }}" class="btn btn-dark w-100">Gerenciar Alunos</a>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card border-secondary shadow-sm h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title"><i class="bi bi-bar-chart-fill me-2"></i>Níveis</h5>
+                <a href="{{ route('nivels.index') }}" class="btn btn-outline-secondary w-100">Gerenciar Níveis</a>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

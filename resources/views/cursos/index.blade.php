@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Cursos</h1>
+
     <a href="{{ route('cursos.create') }}" class="btn btn-primary mb-3">Adicionar Novo Curso</a>
 
     @if(session('success'))
@@ -19,6 +19,8 @@
                 <th>Nome</th>
                 <th>Sigla</th>
                 <th>Total de Horas</th>
+                <th>Eixo</th>
+                <th>Nível</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -28,6 +30,8 @@
                 <td>{{ $curso->nome }}</td>
                 <td>{{ $curso->sigla }}</td>
                 <td>{{ $curso->total_horas }}</td>
+                <td>{{ $curso->eixo->nome ?? 'N/A' }}</td>
+                <td>{{ $curso->nivel->nome ?? 'N/A' }}</td>
                 <td>
                     <a href="{{ route('cursos.edit', $curso) }}" class="btn btn-warning btn-sm">Editar</a>
                     <form action="{{ route('cursos.destroy', $curso) }}" method="POST" style="display:inline;">

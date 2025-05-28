@@ -36,15 +36,16 @@ class RegisteredUserController extends Controller
         ]);
 
         $user = User::create([
-            'name' => $request->nome,
+            'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'tipo' => 'aluno',
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect(route('dashboard.aluno', absolute: false));
     }
 }

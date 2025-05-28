@@ -7,6 +7,8 @@ use App\Http\Controllers\TurmaController;
 use App\Http\Controllers\EixoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DocumentoController;
+use \App\Http\Controllers\AlunoController;
+use \App\Http\Controllers\NivelController;
 
 
 
@@ -17,9 +19,14 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('eixos', EixoController::class);
     Route::resource('categorias', CategoriaController::class);
     Route::resource('documentos', DocumentoController::class);
+    Route::resource('alunos', AlunoController::class);
+    Route::resource('nivels', NivelController::class);
 
 });
 
+Route::middleware(['auth', 'auth.aluno'])->get('/dashboard-aluno', function () {
+    return view('dashboard-aluno');
+})->name('dashboard.aluno');
 
 Route::get('/', function () {
     return view('welcome');

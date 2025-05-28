@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('cursos', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
+            $table->string('sigla');
+            $table->float('total_horas');
+            $table->foreignId('eixo_id')->constrained()->onDelete('cascade');
+            $table->foreignId('nivel_id')->constrained()->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
