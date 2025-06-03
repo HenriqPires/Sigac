@@ -55,7 +55,7 @@
             </ul>
            <hr class="text-white">
             <div class="text-white">
-                <strong>{{ Auth::user()->name }}</strong>
+                <strong>{{ Auth::guard('aluno')->check() ? Auth::guard('aluno')->user()->name : Auth::user()->name }}</strong>
                 <form method="POST" action="{{ route('logout') }}" class="mt-2">
                     @csrf
                     <button class="btn btn-sm btn-light w-100" type="submit"><i class="bi bi-box-arrow-right me-1"></i>Sair</button>
@@ -77,6 +77,10 @@
 
     {{-- Bootstrap JS --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    @stack('scripts')
+   // <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 </body>
 </html>

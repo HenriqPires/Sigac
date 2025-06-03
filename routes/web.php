@@ -11,6 +11,11 @@ use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\NivelController;
 use App\Http\Controllers\Aluno\AlunoLoginController;
 use App\Http\Controllers\Aluno\AlunoRegisterController;
+use App\Http\Controllers\GraficoController;
+use App\Http\Controllers\SolicitacaoController;
+use App\Http\Controllers\Aluno\DeclaracaoController;
+
+
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('cursos', CursoController::class);
@@ -30,6 +35,9 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+   // Route::get('/grafico-horas', [GraficoController::class, 'index'])->middleware('auth')->name('graficos.horas');
+
+
 Route::prefix('aluno')->name('aluno.')->group(function () {
     Route::get('/login', [AlunoLoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AlunoLoginController::class, 'login']);
@@ -43,6 +51,35 @@ Route::middleware(['auth:aluno'])->group(function () {
     Route::get('/dashboard-aluno', function () {
         return view('dashboard-aluno');
     })->name('dashboard.aluno');
+
+    Route::get('/declaracao', [DeclaracaoController::class, 'gerar'])->name('declaracao');
+
+});
+
+Route::prefix('aluno')->name('aluno.')->group(function () {
+    Route::get('/solicitacoes', [SolicitacaoController::class, 'index'])->name('solicitacoes.index');
+    Route::get('/solicitacoes/create', [SolicitacaoController::class, 'create'])->name('solicitacoes.create');
+    Route::post('/solicitacoes', [SolicitacaoController::class, 'store'])->name('solicitacoes.store');
+});
+
+Route::middleware(['auth:aluno'])->prefix('aluno')->name('aluno.')->group(function () {
+    Route::get('/declaracao', [\App\Http\Controllers\Aluno\DeclaracaoController::class, 'gerar'])->name('declaracao');
+});
+
+
+
+
+//p/ admin aceitar solicitações
+Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
+    Route::get('solicitacoes', [SolicitacaoController::class, 'adminIndex'])->name('solicitacoes.index');
+    Route::patch('solicitacoes/{id}/aprovar', [SolicitacaoController::class, 'aprovar'])->name('solicitacoes.aprovar');
+    Route::patch('solicitacoes/{id}/rejeitar', [SolicitacaoController::class, 'rejeitar'])->name('solicitacoes.rejeitar');
+
+});
+
+//Route::middleware(['auth'])->get('/grafico-horas', [App\Http\Controllers\GraficoController::class, 'index'])->name('grafico.horas');
+Route::get('/teste-grafico', function () {
+    return view('teste-grafico');
 });
 
 Route::get('/', function () {

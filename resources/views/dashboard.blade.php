@@ -62,5 +62,13 @@
             </div>
         </div>
     </div>
+    <div class="col">
+    <div class="card border-danger shadow-sm h-100">
+        <div class="card-body text-center">
+            <h5 class="card-title text-danger"><i class="bi bi-clipboard-check-fill me-2"></i>Avaliar Solicitações</h5>
+            <a href="{{ route('admin.solicitacoes.index') }}" class="btn btn-danger w-100">Visualizar Solicitações</a>
+        </div>
+    </div>
+</div>
 </div>
 @endsection
