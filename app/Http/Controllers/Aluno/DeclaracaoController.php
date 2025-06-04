@@ -6,13 +6,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Solicitacao;
+use App\Models\Aluno;
+
 
 class DeclaracaoController extends Controller
 {
     public function gerar()
     {
-        $aluno = Auth::user();
-        $horasAprovadas = Solicitacao::where('user_id', $aluno->id)
+        $aluno = Aluno::where('user_id', Auth::id())->firstOrFail();
+
+        $horasAprovadas = Solicitacao::where('user_id', $aluno->user_id)
             ->where('status', 'aprovada')
             ->sum('quantidade_horas');
 
@@ -23,7 +26,7 @@ class DeclaracaoController extends Controller
         }
 
         $data = [
-            'nome' => $aluno->name,
+            'nome' => $aluno->nome,
             'cpf' => $aluno->cpf,
             'curso' => optional($aluno->curso)->nome ?? 'N/A',
             'horas' => $horasAprovadas,

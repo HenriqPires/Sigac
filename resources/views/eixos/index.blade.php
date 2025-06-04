@@ -15,6 +15,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Nome</th>
                 <th>Ações</th>
             </tr>
@@ -22,6 +23,7 @@
         <tbody>
             @foreach($eixos as $eixo)
             <tr>
+                <td>{{ $eixo->id }}</td>
                 <td>{{ $eixo->nome }}</td>
                 <td>
                     <a href="{{ route('eixos.edit', $eixo) }}" class="btn btn-warning btn-sm">Editar</a>

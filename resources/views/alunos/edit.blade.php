@@ -9,9 +9,8 @@
             @csrf
             @method('PUT')
             @include('alunos._form', ['aluno' => $aluno])
-            <button type="submit" class="btn btn-primary">
-                <i class="bi bi-save"></i> Atualizar
-            </button>
+                <button type="submit" class="btn btn-primary">Atualizar</button>
+
         </form>
     </div>
 </div>

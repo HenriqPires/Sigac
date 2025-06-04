@@ -16,6 +16,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Nome</th>
                 <th>Sigla</th>
                 <th>Total de Horas</th>
@@ -27,6 +28,7 @@
         <tbody>
             @foreach($cursos as $curso)
             <tr>
+                <td>{{ $curso->id }}</td>
                 <td>{{ $curso->nome }}</td>
                 <td>{{ $curso->sigla }}</td>
                 <td>{{ $curso->total_horas }}</td>

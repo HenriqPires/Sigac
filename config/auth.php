@@ -43,7 +43,7 @@ return [
 
     'aluno' => [
         'driver' => 'session',
-        'provider' => 'users',
+        'provider' => 'alunos',
       ],
     ],
 
@@ -69,6 +69,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+
+        'alunos' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Aluno::class,
+    ],
 
         // 'users' => [
         //     'driver' => 'database',

@@ -17,6 +17,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
+                 <th>ID</th>
                 <th>Nome</th>
                 <th>Máx. Horas</th>
                 <th>Curso</th>
@@ -26,6 +27,7 @@
         <tbody>
             @foreach($categorias as $categoria)
             <tr>
+                <td>{{ $categoria->id }}</td>
                 <td>{{ $categoria->nome }}</td>
                 <td>{{ $categoria->maximo_horas }}</td>
                 <td>{{ $categoria->curso->nome ?? 'N/A' }}</td>

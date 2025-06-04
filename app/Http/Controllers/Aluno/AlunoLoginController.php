@@ -8,25 +8,29 @@ use Illuminate\Support\Facades\Auth;
 
 class AlunoLoginController extends Controller
 {
-    public function showLoginForm()
+     public function showLoginForm()
     {
         return view('auth.aluno.login');
     }
 
     public function login(Request $request)
     {
-        $request->validate([
+        $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-        if (Auth::guard('aluno')->attempt([
-            'email' => $request->email,
-            'password' => $request->password
-        ])) {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended(route('dashboard.aluno'));
+            if (Auth::user()->tipo === 'aluno') {
+                return redirect()->intended(route('dashboard.aluno'));
+            }
+
+            Auth::logout();
+            return back()->withErrors([
+                'email' => 'Apenas alunos podem acessar por aqui.',
+            ]);
         }
 
         return back()->withErrors([
@@ -36,7 +40,7 @@ class AlunoLoginController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::guard('aluno')->logout();
+        Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 

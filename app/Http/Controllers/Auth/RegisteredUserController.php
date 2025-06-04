@@ -39,13 +39,17 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'tipo' => 'aluno',
+            'tipo' => 'admin',
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard.aluno', absolute: false));
+        if ($user->tipo === 'admin') {
+        return redirect()->route('dashboard');
+        }
+
+        return redirect()->route('dashboard.aluno');
     }
 }

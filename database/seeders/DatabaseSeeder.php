@@ -20,9 +20,9 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'), // senha: password
         ]);
 
-        // Executa seeder de solicitações
         $this->call([
-            SolicitacoesSeeder::class,
-        ]);
+        UserAlunoSeeder::class,
+        SolicitacoesSeeder::class,
+    ]);
     }
 }

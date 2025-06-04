@@ -14,17 +14,20 @@ class GraficoController extends Controller
         $query->where('status', 'aprovada');
     }])->get();
 
-    $dados = [];
+    $dadosParaGrafico = [];
 
-    foreach ($turmas as $turma) {
-        $totalHoras = 0;
-        foreach ($turma->alunos as $aluno) {
-            $totalHoras += $aluno->solicitacoes->sum('quantidade_horas');
+        foreach ($turmas as $turma) {
+            $totalHoras = 0;
+            foreach ($turma->alunos as $aluno) {
+                $totalHoras += $aluno->solicitacoes->sum('quantidade_horas');
+            }
+
+            $dadosParaGrafico[] = [$turma->nome, $totalHoras];
         }
-        $dados[] = [$turma->nome, $totalHoras];
+
+        return view('graficos.horas', [
+            'dadosParaGrafico' => $dadosParaGrafico
+        ]);
     }
 
-    return view('graficos.horas', ['dados' => $dados]);
-}
-    
 }

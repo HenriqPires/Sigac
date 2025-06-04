@@ -20,7 +20,12 @@
 
         <div class="mb-3">
             <label for="cpf" class="form-label">Email</label>
-            <input type="text" name="cpf" id="cpf" class="form-control" required>
+            <input type="text" name="email" id="email" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="senha" class="form-label">Senha</label>
+            <input type="password" name="password" id="password" class="form-control" required>
         </div>
 
         <div class="mb-3">

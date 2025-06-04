@@ -2,15 +2,23 @@
 
 namespace App\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Aluno extends Model
+class Aluno extends Authenticatable
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['nome', 'cpf', 'email', 'senha', 'user_id', 'curso_id', 'turma_id'];
+    protected $fillable = ['nome', 'cpf', 'email', 'password', 'user_id', 'curso_id', 'turma_id'];
+
+    protected $hidden = ['password']; 
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
 
     public function user()
     {
@@ -27,13 +35,8 @@ class Aluno extends Model
         return $this->belongsTo(Turma::class);
     }
 
-    public function comprovantes()
+    public function solicitacoes()
     {
-        return $this->hasMany(Comprovante::class);
-    }
-
-    public function declaracoes()
-    {
-        return $this->hasMany(Declaracao::class);
+        return $this->hasMany(Solicitacao::class, 'user_id');
     }
 }

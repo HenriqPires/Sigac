@@ -1,4 +1,4 @@
-@extends('layouts.sidebar')
+@extends('layouts.sidebar-aluno')
 
 @section('header', 'Minhas Solicitações')
 

@@ -23,13 +23,14 @@ class AuthenticatedSessionController extends Controller
      * Handle an incoming authentication request.
      */
     public function store(Request $request): RedirectResponse
-{
-    $request->validate([
+    {
+
+        $credentials = $request->validate([
         'email' => 'required|email',
         'password' => 'required',
     ]);
 
-    if (!Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
+    if (!Auth::attempt($credentials, $request->boolean('remember'))) {
         return back()->withErrors([
             'email' => 'As credenciais estão incorretas.',
         ])->onlyInput('email');
@@ -39,6 +40,7 @@ class AuthenticatedSessionController extends Controller
 
     $user = Auth::user();
 
+    // 👇 Aqui faz o redirecionamento explícito
     if ($user->tipo === 'admin') {
         return redirect()->route('dashboard');
     }

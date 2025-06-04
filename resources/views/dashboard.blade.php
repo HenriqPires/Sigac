@@ -39,14 +39,6 @@
         </div>
     </div>
     <div class="col">
-        <div class="card h-100 border-secondary shadow">
-            <div class="card-body text-center">
-                <h5 class="card-title text-secondary"><i class="bi bi-file-earmark-text-fill me-2"></i>Documentos</h5>
-                <a href="{{ route('documentos.index') }}" class="btn btn-outline-secondary w-100">Minhas Solicitações</a>
-            </div>
-        </div>
-    </div>
-    <div class="col">
         <div class="card border-dark shadow-sm h-100">
             <div class="card-body text-center">
                 <h5 class="card-title"><i class="bi bi-person-badge-fill me-2"></i>Alunos</h5>
@@ -69,6 +61,14 @@
             <a href="{{ route('admin.solicitacoes.index') }}" class="btn btn-danger w-100">Visualizar Solicitações</a>
         </div>
     </div>
-</div>
+    </div>
+    <div class="col">
+        <div class="card border-primary shadow-sm h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title"><i class="bi bi-bar-chart-line-fill me-2"></i>Gráficos</h5>
+                <a href="{{ route('admin.graficos.horas') }}" class="btn btn-outline-primary w-100">Visualizar Gráfico de Horas</a>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

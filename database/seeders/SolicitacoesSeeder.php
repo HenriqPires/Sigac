@@ -14,44 +14,22 @@ class SolicitacoesSeeder extends Seeder
     public function run(): void
     {
     
-        $aluno = User::where('tipo', 'aluno')->first();
+       Solicitacao::create([
+            'user_id' => 1,
+            'atividade' => 'Palestra de Segurança',
+            'descricao' => 'Participação em evento de tecnologia',
+            'quantidade_horas' => 20,
+            'comprovante' => 'comprovantes/palestra.pdf',
+            'status' => 'aprovada'
+        ]);
 
-        if (!$aluno) {
-            $this->command->warn('Nenhum aluno encontrado. Por favor, cadastre um aluno com tipo "aluno" antes de rodar este seeder.');
-            return;
-        }
-
-        
-        $solicitacoes = [
-            [
-                'atividade' => 'Palestra de Tecnologia',
-                'descricao' => 'Participação em palestra sobre inovação em TI.',
-                'quantidade_horas' => 10,
-                'status' => 'pendente',
-            ],
-            [
-                'atividade' => 'Curso de Extensão',
-                'descricao' => 'Curso de Desenvolvimento Web com Laravel.',
-                'quantidade_horas' => 20,
-                'status' => 'aprovada',
-            ],
-            [
-                'atividade' => 'Organização de Evento',
-                'descricao' => 'Auxílio na organização da semana acadêmica.',
-                'quantidade_horas' => 15,
-                'status' => 'rejeitada',
-            ],
-        ];
-
-        foreach ($solicitacoes as $dados) {
-            Solicitacao::create([
-                'user_id' => $aluno->id,
-                'atividade' => $dados['atividade'],
-                'descricao' => $dados['descricao'],
-                'quantidade_horas' => $dados['quantidade_horas'],
-                'status' => $dados['status'],
-                'comprovante' => null,
-            ]);
+        Solicitacao::create([
+            'user_id' => 2,
+            'atividade' => 'Feira de Ciências',
+            'descricao' => 'Participação como organizadora',
+            'quantidade_horas' => 50,
+            'comprovante' => 'comprovantes/feira.pdf',
+            'status' => 'pendente'
+        ]);
         }
     }
-}

@@ -40,24 +40,20 @@
     <div class="d-flex">
         <!-- Sidebar -->
         <div class="sidebar p-3 position-fixed" style="width: 220px;">
-            <h4 class="text-white">SIGAC</h4>
+            <h4 class="text-white">SIGAC - Aluno</h4>
             <hr class="text-white">
             <ul class="nav nav-pills flex-column mb-auto">
-                <li><a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a></li>
-                <li><a href="{{ route('cursos.index') }}" class="nav-link"><i class="bi bi-book-fill me-2"></i>Cursos</a></li>
-                <li><a href="{{ route('turmas.index') }}" class="nav-link"><i class="bi bi-people-fill me-2"></i>Turmas</a></li>
-                <li><a href="{{ route('eixos.index') }}" class="nav-link"><i class="bi bi-diagram-3-fill me-2"></i>Eixos</a></li>
-                <li><a href="{{ route('categorias.index') }}" class="nav-link"><i class="bi bi-tags-fill me-2"></i>Categorias</a></li>
-                <li><a href="{{ route('alunos.index') }}" class="nav-link"><i class="bi bi-person-lines-fill me-2"></i>Alunos</a></li>
-                <li><a href="{{ route('nivels.index') }}" class="nav-link"><i class="bi bi-layers-fill me-2"></i>Níveis</a></li>
-                
+                <li><a href="{{ route('dashboard.aluno') }}" class="nav-link {{ request()->routeIs('dashboard.aluno') ? 'active' : '' }}"><i class="bi bi-house-fill me-2"></i>Dashboard</a></li>
+                <li><a href="{{ route('aluno.solicitacoes.create') }}" class="nav-link"><i class="bi bi-plus-circle me-2"></i>Solicitar Horas</a></li>
+                <li><a href="{{ route('aluno.solicitacoes.index') }}" class="nav-link"><i class="bi bi-list-check me-2"></i>Solicitações</a></li>
+                <li><a href="{{ route('aluno.declaracao') }}" class="nav-link"><i class="bi bi-file-earmark-arrow-down me-2"></i>Declaração</a></li>
             </ul>
-           <hr class="text-white">
+            <hr class="text-white">
             <div class="text-white">
-                <strong>{{ Auth::guard('aluno')->check() ? Auth::guard('aluno')->user()->name : Auth::user()->name }}</strong>
-                <form method="POST" action="{{ route('logout') }}" class="mt-2">
+                <strong>{{ Auth::user()->name }}</strong>
+                <form method="POST" action="{{ route('aluno.logout') }}" class="mt-2">
                     @csrf
-                    <button class="btn btn-sm btn-light w-100" type="submit"><i class="bi bi-box-arrow-right me-1"></i>Sair</button>
+                    <button class="btn btn-sm btn-light w-100" type="submit"><i class="bi bi-box-arrow-right me-1"></i> Sair</button>
                 </form>
             </div>
         </div>
@@ -76,10 +72,6 @@
 
     {{-- Bootstrap JS --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
     @yield('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
 </body>
 </html>

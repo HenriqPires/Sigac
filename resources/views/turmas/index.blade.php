@@ -15,6 +15,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Ano</th>
                 <th>Curso</th>
                 <th>Ações</th>
@@ -23,6 +24,7 @@
         <tbody>
             @foreach($turmas as $turma)
             <tr>
+                <td>{{ $turma->id }}</td>
                 <td>{{ $turma->ano }}</td>
                 <td>{{ $turma->curso->nome ?? 'Curso não atribuído' }}</td>
                 <td>
