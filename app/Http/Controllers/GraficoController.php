@@ -22,7 +22,7 @@ class GraficoController extends Controller
                 $totalHoras += $aluno->solicitacoes->sum('quantidade_horas');
             }
 
-            $dadosParaGrafico[] = [$turma->nome, $totalHoras];
+            $dadosParaGrafico[] = [(string)$turma->ano, $totalHoras];
         }
 
         return view('graficos.horas', [

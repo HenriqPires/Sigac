@@ -26,6 +26,6 @@ class Solicitacao extends Model
 
     public function aluno()
     {
-    return $this->belongsTo(Aluno::class, 'user_id');
+    return $this->belongsTo(Aluno::class, 'user_id',);
     }
 }

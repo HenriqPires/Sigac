@@ -43,7 +43,7 @@
     </div>
 
     <div class="conteudo">
-        <p>Declaramos para os devidos fins que <strong>{{ $nome }}</strong>, regularmente matriculado no curso, cumpriu um total de <strong>{{ $horas }} horas complementares</strong>, conforme as normas da instituição.</p>
+        <p>Declaramos para os devidos fins que <strong>{{ $nome }}</strong>, portador do CPF <strong>{{ $cpf }}</strong>, regularmente matriculado no curso de <strong>{{ $curso }}</strong>, cumpriu um total de <strong>{{ $horas }} horas complementares</strong>, conforme as normas da instituição.</p>
 
         <p class="dados">Data de emissão: <strong>{{ $data }}</strong></p>
     </div>

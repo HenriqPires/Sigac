@@ -37,6 +37,6 @@ class Aluno extends Authenticatable
 
     public function solicitacoes()
     {
-        return $this->hasMany(Solicitacao::class, 'user_id');
+        return $this->hasMany(Solicitacao::class, 'user_id', 'user_id');
     }
 }
